@@ -316,7 +316,7 @@ contract HamsterMarketplaceToken is StandardToken, Pausable {
       require(balances[msg.sender] >= amount);                                 // Checks if the sender has enough to sell
       balances[this] = balances[this].add(amount);                             // Adds the amount to owner's balance
       balances[msg.sender] = balances[msg.sender].sub(amount);                 // Subtracts the amount from seller's balance
-      revenue = amount.mul(sellPrice);                                         // Calculate seller reward
+      revenue = amount.mul(sellPrice);                                         // Calculate the seller reward
       msg.sender.transfer(revenue);                                            // Sends ether to the seller: it's important to do this last to prevent recursion attacks
       Transfer(msg.sender, this, amount);                                      // Executes an event reflecting on the change
       return revenue;                                                          // Ends function and returns
